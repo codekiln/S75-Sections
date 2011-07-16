@@ -1,7 +1,8 @@
 <?php 
+$purpose = "Use file_exists(\$path) instead of 
+file_get_contents(\$path) to check for existence
+of cached file.";
 /**
- * map4.php: use file_exists instead of file_get_contents to 
- * check for existence of cached file
  * cf: http://localhost/s75/1/map4.php
  *
  * Purpose: to make a progressive enhancement based
@@ -30,6 +31,7 @@
   </head>
   <body>
 <h1>Map 4</h1>
+<p><?php echo $purpose; ?></p>
 <img src="<?php echo $cacheName ?>"/>
 <?php echo "<br/><strong>$cacheName</strong>"; ?>
 </body>

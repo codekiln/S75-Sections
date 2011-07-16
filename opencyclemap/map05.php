@@ -1,4 +1,6 @@
 <?php 
+$purpose = "You can gain access to the current file name
+with __FILE__ or with \$_SERVER['PHP_SELF']";
 /**
  * map5.php: dynamically insert example number into page title 
  * cf: http://localhost/s75/1/map5.php
@@ -43,10 +45,12 @@ $fnumber = preg_replace( "/.*map(\\d+).php/", "\\1", $fname );
   </head>
   <body>
 <h1>map<?php echo $fnumber ?>.php</h1>
+<p><?php echo $purpose; ?></p>
   <img src="<?php echo $cacheName ?>" 
     alt="cycle map"/>
 <?php
-echo "<br/><b>filename: </b>$cacheName"; 
+echo "<br/><strong>filename: </strong>$cacheName"; 
+echo "<pre>" . htmlspecialchars(file_get_contents("map04.php")). "</pre>";
 ?>
 </body>
 </html>

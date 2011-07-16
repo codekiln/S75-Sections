@@ -1,7 +1,7 @@
 <?php  
+$purpose = "save remote image locally, but this time 
+only if the image isn't already in the cache";
 /**
- * map3.php: save remote image locally, but this time only if
- * the image isn't already in the cache
  * cf: http://localhost/s75/1/map3.php
  *
  * Purpose: to make a progressive enhancement based
@@ -34,6 +34,7 @@
   </head>
   <body>
 <h1>Map 3</h1>
+<p><?php echo $purpose; ?></p>
 <img src="<?php echo $cacheName ?>"/>
 <?php echo "<br/><strong>$cacheName</strong>"; ?>
 </body>
