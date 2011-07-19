@@ -1,19 +1,110 @@
 <?php
-error_reporting( E_ALL ^ E_STRICT );
 $examplePrefix = "map";
-if( $handle = opendir('.')) {
-	$examples = array();
-	$maxFnumber = 0;
-	while( false !== ($file = readdir($handle))) {
-		if( preg_match( "/.*" . $examplePrefix . "\d\d\.php/", $file ) ) {
-			$num = intval(preg_replace( 
-				"/.*" . $examplePrefix . "(\\d+).*php/", 
-				"\\1", $file ));
-			$maxFnumber = max($num,$maxFnumber);
+$state = new PageState();
+$maxFnumber = getMaximumExampleNumber('.','map');
+
+/**
+ * Handy print array function for debugging
+ */
+function pr($arr) {
+	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
+}
+
+/**
+  * Searches the given directory for files with names like
+  * 'examplePrefix01.exampleSuffix, examplePrefix02.exampleSuffix'
+  * etc. Default is "example01.php", "example02.php". Returns
+  * the maximum example number for the given prefix and suffix
+  * in the directory, and false if there is a problem reading the dir.
+  */
+function getMaximumExampleNumber($directory='.', $examplePrefix='example', $exampleSuffix='php') {
+    $maxFnumber = 0;
+	if( $handle = opendir($directory)) {
+		while( false !== ($file = readdir($handle))) {
+			if( preg_match( "/.*" . $examplePrefix . "\d\d\.$exampleSuffix/", $file ) ) {
+				$num = intval(preg_replace( 
+							"/.*" . $examplePrefix . "(\\d+).*$exampleSuffix/", 
+							"\\1", $file ));
+				$maxFnumber = max($num,$maxFnumber);
+			}
+		}
+		closedir($handle);
+		return $maxFnumber;
+	}
+	return false;
+}
+
+/**
+  * Maintains page state
+  **/
+class PageState {
+
+	public $query;
+	public $data;
+	public $file;
+
+	function __construct() {
+		// get the query string this page was requested with
+		$this->query = $_SERVER['QUERY_STRING'];
+		// put the values of the query into the data array
+		parse_str($this->query, $this->data);
+		// get this file and prevent xss; we're going to be
+		// echoing this out to the user when we create links
+		// to this file
+		$this->file = htmlspecialchars($_SERVER['PHP_SELF']);
+	}
+
+
+	/**
+	 * $iframeOrSource is the string 'iframe' or 'source'. 
+	 * $controlNumber is the number of the iframe or source to query
+	 * returns the url that this page was requested with, except with 
+	 * the given $iframeOrSource $controlNumber combination toggled
+	 * the other direction.
+	 */
+	function toggleParameter( $iframeOrSource, $controlNumber ) {
+		if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')) return;
+		if( $this->isEnabled( $iframeOrSource, $controlNumber ) ) {
+			unset( $this->data[$iframeOrSource][$controlNumber]);
+		} else {
+			$this->data[$iframeOrSource][$controlNumber]=1;	
 		}
 	}
-	closedir($handle);
+
+	function getQuery() {
+		$quer = http_build_query(
+			array(
+				'iframes'=>$this->data['iframes'],
+				'sources'=>$this->data['sources'])) ; 
+		return  $this->file . "?" . trim($quer);
+	}
+
+	/**
+	 * $iframeOrSource is the string 'iframe' or 'source'. 
+	 * $controlNumber is the number of the iframe or source to query
+	 * returns true iff the $iframeOrSource $controlNumber is activated
+	 * in the url that fetched this page.
+	 */
+	function isEnabled( $iframeOrSource, $controlNumber ) {
+		if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')){ 
+			return false;
+		}
+		$exists = array_key_exists( $controlNumber, $this->data[$iframeOrSource]);
+		return $exists; 
+	}
+
+	function getToggleQuery( $iframeOrSource, $controlNumber ) {
+		$this->toggleParameter($iframeOrSource, $controlNumber);
+		$quer = $this->getQuery();
+		$this->toggleParameter($iframeOrSource, $controlNumber);
+		return $quer;
+	}
+
+	function getFile() {
+		return $this->file;
+	}
 }
+
 ?>
 <html>
   <head>
@@ -23,26 +114,42 @@ if( $handle = opendir('.')) {
   	<h1>Examples</h1>
 	<table border="1">
 	<?php 
-		for( $i = 0; $i < $maxFnumber; $i++ ){
-			$fname = $examplePrefix . sprintf("%02d", $i+1) . ".php";?>
-			<tr>
-			<td><?=$fname?><td>
+		for( $i=1; $i <= $maxFnumber; $i++ ){
+			$fname = $examplePrefix . sprintf("%02d", $i) . ".php";
+			$rowId = "example-$i";
+			$hasSource = $state->isEnabled('sources', $i);
+			$hasIframe = $state->isEnabled('iframes', $i);
+			?>
+			<tr id="<?=$rowId?>">
+			<td><?=$fname?></td>
 			<td><a target='blank' href='<?= $fname?>'>new tab</a></td>
-			<td><a id="display-source-<?=$i?>" href="#display-source-<?=$i?>">show source</a>
-				<pre style="display:none;">
-					<?= htmlspecialchars(file_get_contents($fname)) ?>
-				</pre></td>
-			<td><a 
-			  href='#' 
-			  onclick="
-			  	window.frames['<?=$fname?>']
-				  .location='<?=$fname?>';
-			  "
-			  >load <?=$fname?></a>
-			  <iframe name='<?=$fname?>' src=''>
-					<p>Your browser does not support iframes.</p>
-			  </iframe>
-			 </td>
+			<td>
+			<!-- for later: 
+				  onclick="window.frames['<?=$fname?>']
+				  .location='<?=$fname?>'; return false;"
+			  -->
+			<a href='<?=$state->getToggleQuery('sources',$i).'#'.$rowId."'>";
+			echo ($hasSource)? "hide src" : "show src";	
+			echo "</a><pre ";
+			echo ($hasSource)? ">" : " style='display:none'>";
+			echo htmlspecialchars(file_get_contents($fname)) ;
+			?>
+				</pre>
+		    </td>
+			<td>
+				<a href='<?php 
+				echo $state->getToggleQuery('iframes', $i).'#'.$rowId."'>";
+				echo ($hasIframe) ? "hide" : "show";
+				echo "</a>";
+				if($hasIframe) { ?>
+					<form action="<?=$state->getQuery?>" method="get">
+						<input type="text" name="iframes[<?=$i?>]" value="<?=$fname?>"/>
+					</form>
+					<iframe src='<?=$fname?>' name='<?=$fname?>' height="450" width="450">
+						<p>Your browser does not support iframes.</p>
+					</iframe>
+				<? } ?>
+			</td>
 		<?}?>
   </body>
 </html>
