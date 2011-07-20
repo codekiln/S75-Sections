@@ -1,6 +1,6 @@
 <?php
-$examplePrefix = "map";
 $state = new PageState();
+// get the number of examples in the current directory
 $maxFnumber = getMaximumExampleNumber('.','map');
 
 /**
@@ -8,6 +8,17 @@ $maxFnumber = getMaximumExampleNumber('.','map');
  */
 function pr($arr) {
 	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
+}
+
+/**
+  * Handy function that will print the GET params
+  * if there are any
+  */
+function printGet() {
+	if( count($_GET) > 0 ) {
+		echo "<h2>Passing in GET parameters:</h2>";
+		pr( $_GET );
+	}
 }
 
 /**
@@ -32,6 +43,10 @@ function getMaximumExampleNumber($directory='.', $examplePrefix='example', $exam
 		return $maxFnumber;
 	}
 	return false;
+}
+
+function getExampleName($index=1, $examplePrefix='map', $exampleSuffix='php') {
+	return $examplePrefix . sprintf("%02d", $index) . "." .  $exampleSuffix; 
 }
 
 /**
@@ -67,7 +82,7 @@ class PageState {
 		if( $this->isEnabled( $iframeOrSource, $controlNumber ) ) {
 			unset( $this->data[$iframeOrSource][$controlNumber]);
 		} else {
-			$this->data[$iframeOrSource][$controlNumber]=1;	
+			$this->data[$iframeOrSource][$controlNumber]='?';	
 		}
 	}
 
@@ -103,22 +118,31 @@ class PageState {
 	function getFile() {
 		return $this->file;
 	}
+
+	function getIframe($number) {
+		if( $this->isEnabled('iframes',$number ) ) {
+			return $this->data['iframes'][$number];
+		}
+		return false;
+	}
 }
 
 ?>
 <html>
   <head>
     <title>Examples</title>
+	<link rel="stylesheet" type="text/css" href="index_style.css"/>
   </head>
   <body>
   	<h1>Examples</h1>
+	<? printGet(); ?>
 	<table border="1">
 	<?php 
 		for( $i=1; $i <= $maxFnumber; $i++ ){
-			$fname = $examplePrefix . sprintf("%02d", $i) . ".php";
+			$fname = getExampleName($i);
 			$rowId = "example-$i";
 			$hasSource = $state->isEnabled('sources', $i);
-			$hasIframe = $state->isEnabled('iframes', $i);
+			$iframe = $state->getIframe($i);
 			?>
 			<tr id="<?=$rowId?>">
 			<td><?=$fname?></td>
@@ -139,13 +163,13 @@ class PageState {
 			<td>
 				<a href='<?php 
 				echo $state->getToggleQuery('iframes', $i).'#'.$rowId."'>";
-				echo ($hasIframe) ? "hide" : "show";
+				echo ($iframe) ? "hide" : "show";
 				echo "</a>";
-				if($hasIframe) { ?>
-					<form action="<?=$state->getQuery?>" method="get">
-						<input type="text" name="iframes[<?=$i?>]" value="<?=$fname?>"/>
+				if($iframe) { ?>
+					<form action="<?=$state->getQuery()?>" method="get">
+						query parameters: <input type="text" name="iframes[<?=$i?>]" value="<?=$iframe?>"/>
 					</form>
-					<iframe src='<?=$fname?>' name='<?=$fname?>' height="450" width="450">
+					<iframe src='<?=$fname . $iframe?>' name='<?=$fname?>'>
 						<p>Your browser does not support iframes.</p>
 					</iframe>
 				<? } ?>

@@ -56,6 +56,24 @@ $fname = __FILE__;
 $fnumber = preg_replace( "/.*map(\\d+).php/", 
   "\\1", $fname );
 //echo( "<br/>".$fnumber );
+
+/**
+ * Handy print array function for debugging
+ */
+function pr($arr) {
+	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
+}
+
+/**
+  * Handy function that will print the GET params
+  * if there are any
+  */
+function printGet() {
+	if( count($_GET) > 0 ) {
+		echo "<h2>Passing in GET parameters:</h2>";
+		pr( $_GET );
+	}
+}
 ?>
 <html>
   <head>
@@ -63,6 +81,7 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
   </head>
   <body>
 <h1>map<?php echo $fnumber ?>.php</h1>
+	<? printGet(); ?>
   <img src="<?php echo $cacheName?>" 
     alt="cycle map of latitude $lat, 
       longitude $lon, and zoom $zoom" />

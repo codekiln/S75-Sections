@@ -1,6 +1,7 @@
 <?php  
 $purpose = "save remote image locally, but this time 
 only if the image isn't already in the cache";
+
 /**
  * cf: http://localhost/s75/1/map3.php
  *
