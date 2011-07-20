@@ -1,17 +1,12 @@
 <?php 
-$purpose = "You can gain access to the current file name
-with __FILE__ or with \$_SERVER['PHP_SELF']";
+$purpose = "You can gain access to the current file name with "
+."__FILE__ or with \$_SERVER['PHP_SELF']";
+$exampleParams ="?"; 
 /**
- * map5.php: dynamically insert example number into page title 
  * cf: http://localhost/s75/1/map5.php
- *
- * Purpose: to make a progressive enhancement based
- * google-maps-like interface
- * 
  * Author: Peter Nore
  * Date: July 6, 2011
  */
-
 $remoteImageFilename = "http://a.tile.opencyclemap.org/cycle/14/4944/6053.png";
 // strip away everything except for /14/4944/6053
 $localImageFilename = preg_replace(
@@ -29,10 +24,11 @@ $cacheName = $localImageDirectory . "/" . $localImageFilename . ".png";
 if(file_exists($cacheName)===false){
   $image = file_get_contents($remoteImageFilename); 
   file_put_contents($cacheName, $image);
+	chmod($cacheName,644);
 } 
 
 // get this php file's name
-$fname = __FILE__;
+$fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
 //echo( "<br/>".$fname );
 // extract the number from this file's name
 $fnumber = preg_replace( "/.*map(\\d+).php/", "\\1", $fname );
@@ -45,12 +41,12 @@ $fnumber = preg_replace( "/.*map(\\d+).php/", "\\1", $fname );
   </head>
   <body>
 <h1>map<?php echo $fnumber ?>.php</h1>
+<a href="<?=$fname.$exampleParams?>">Example Url</a>
 <p><?php echo $purpose; ?></p>
   <img src="<?php echo $cacheName ?>" 
     alt="cycle map"/>
 <?php
 echo "<br/><strong>filename: </strong>$cacheName"; 
-echo "<pre>" . htmlspecialchars(file_get_contents("map04.php")). "</pre>";
 ?>
 </body>
 </html>

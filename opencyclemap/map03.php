@@ -27,6 +27,7 @@ only if the image isn't already in the cache";
   if(@file_get_contents($cacheName)===false){
 	  $image = file_get_contents($remoteImageFilename); 
 	  file_put_contents($cacheName, $image);
+	chmod($cacheName,644);
   } 
 ?>
 <html>

@@ -1,12 +1,10 @@
 <?php
+$purpose = "capture latitude and longitude parameters";
+$exampleParams ='?zoom=14&lat=42.46052&lon=-71.3489';
+require('handy.php');
 /**
- * map5.php: capture latitude and longitude parameters
  * cf: http://localhost/s75/1/map6.php?zoom=14&lat=42.46052&lon=-71.3489
  * cf: http://www.opencyclemap.org/?zoom=14&lat=42.46052&lon=-71.3489
- *
- * Purpose: to make a progressive enhancement based
- * google-maps-like interface
- * 
  * Author: Peter Nore
  * Date: July 6, 2011
  */
@@ -36,33 +34,17 @@ $lon = (isset($_GET['lon'])) ? $_GET['lon'] : -71.11952;
   if(file_exists($cacheName)===false){
           $image = file_get_contents($remoteImageFilename); 
           file_put_contents($cacheName, $image);
+		  chmod($cacheName,644);
   } 
 
   // get this file's name
-  $fname = __FILE__;
+$fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
   //echo( "<br/>".$fname );
   // get the number before .php
   $fnumber = preg_replace( "/.*map(\\d+).php/", 
     "\\1", $fname );
   //echo( "<br/>".$fnumber );
 
-/**
- * Handy print array function for debugging
- */
-function pr($arr) {
-	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
-}
-
-/**
-  * Handy function that will print the GET params
-  * if there are any
-  */
-function printGet() {
-	if( count($_GET) > 0 ) {
-		echo "<h2>Passing in GET parameters:</h2>";
-		pr( $_GET );
-	}
-}
 ?>
 <html>
   <head>
@@ -71,6 +53,10 @@ function printGet() {
   <body>
 <h1>map<?php echo $fnumber ?>.php</h1>
 	<? printGet(); ?>
+<a href="<?=$fname.$exampleParams?>">
+<?=$exampleParams?></a>
+<p><?=$purpose?></p>
+<div id="example">
   <img src="<?php echo $cacheName ?>" 
     alt="cycle map of latitude $lat, 
       longitude $lon, and zoom $zoom" />
@@ -83,5 +69,6 @@ echo "<br/><b>zoom:</b>$zoom";
 echo "<br/><b>lat:</b>$lat"; 
 echo "<br/><b>lon:</b>$lon<br/>"; 
 ?>
+</div>
 </body>
 </html>

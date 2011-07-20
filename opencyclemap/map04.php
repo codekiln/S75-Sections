@@ -23,6 +23,7 @@ of cached file.";
   if(file_exists($cacheName)===false){
 	  $image = file_get_contents($remoteImageFilename); 
 	  file_put_contents($cacheName, $image);
+	chmod($cacheName,644);
   } 
 ?>
 <html>

@@ -1,25 +1,22 @@
 <?php
+/**
+  * File for displaying php examples for teaching
+  * purposes. To display six examples (or however many)
+  * put in a directory, create examples named 
+  * prefix01.suffix to prefix06.suffix, then 
+  * edit the call to getMaximumExampleNumber() and 
+  * getExampleName() below to match your prefix
+  * and suffix.
+  * 
+  * Author: Peter Nore
+  * Created: July 20, 2011
+  **/ 
+require('handy.php');
+
 $state = new PageState();
 // get the number of examples in the current directory
 $maxFnumber = getMaximumExampleNumber('.','map');
 
-/**
- * Handy print array function for debugging
- */
-function pr($arr) {
-	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
-}
-
-/**
-  * Handy function that will print the GET params
-  * if there are any
-  */
-function printGet() {
-	if( count($_GET) > 0 ) {
-		echo "<h2>Passing in GET parameters:</h2>";
-		pr( $_GET );
-	}
-}
 
 /**
   * Searches the given directory for files with names like
@@ -166,7 +163,7 @@ class PageState {
 				echo ($iframe) ? "hide" : "show";
 				echo "</a>";
 				if($iframe) { ?>
-					<form action="<?=$state->getQuery()?>" method="get">
+					<form action="<?=$state->getQuery().'#'.$rowId?>" method="get">
 						query parameters: <input type="text" name="iframes[<?=$i?>]" value="<?=$iframe?>"/>
 					</form>
 					<iframe src='<?=$fname . $iframe?>' name='<?=$fname?>'>
