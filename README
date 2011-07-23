@@ -1,3 +1,4 @@
+http://is.gd/2011s75sections
 Sections for S-75, Building Dynamic Websites
 
 This directory contains Peter's latest examples
@@ -6,7 +7,7 @@ to sync with the examples, do this:
 
 cd ~/public_html
 mkdir examples
-cd 711 examples
+chmod 711 examples
 cd examples
 git clone git://github.com/codekiln/S75-Sections.git
 
@@ -14,7 +15,7 @@ Git will download the latest update to the section
 examples. Test to make sure it is working by opening
 firefox in the appliance and going to:
 
-localhost/~jharvard/examples/S75-Sections/opencyclemap/
+http://localhost/~jharvard/examples/S75-Sections/opencyclemap/
 
 For now, you will need to update the permissions to
 the files on your own in order to get the examples
