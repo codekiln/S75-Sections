@@ -3,6 +3,7 @@ require('handy.php');
 $purpose = "
 Input contact information from form through POST into
 database, validating the information before submitting.
+Assumes you have created jharvard_example2 database.
 Based off of <a
 href='http://wwwfreewebmasterhelpcom/tutorials/phpmysql/2'>
 this tutorial</a>'

@@ -1,7 +1,8 @@
 <?php
 require('handy.php');
-$purpose = "inser contact info for John "
-  . "based off of "
+$purpose = "insert contact info for John Harvard. Assumes  "
+  . "that you have created jharvard_example02 database."
+  . "  Based off of "
   . "<a href='http://www.freewebmasterhelp.com/tutorials/phpmysql/2'>"
   . "this tutorial</a>'";
 $exampleParams ='';

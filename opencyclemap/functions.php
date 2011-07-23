@@ -47,6 +47,8 @@ function getCachedFname( $xtile, $ytile, $zoom ) {
   if(file_exists($cacheName)===false){
     $image = file_get_contents($remoteImageFilename); 
     file_put_contents($cacheName, $image);
+	// you need to set the permissions manually
+	chmod($cacheName,644);
   } 
   return $cacheName;
 }
