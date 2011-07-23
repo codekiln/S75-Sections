@@ -1,37 +1,39 @@
-http://is.gd/2011s75sections
-Sections for S-75, Building Dynamic Websites
+http://is.gd/2011s75sections Sections for S-75, Building
+Dynamic Websites
 
-This directory contains Peter's latest examples
-from section. To download this directory and keep up 
-to sync with the examples, do this: 
+The examples from sections are available at
+https://github.com/codekiln/S75-Sections. To download this
+directory and keep the examples sync'd to your appliance, do
+this: 
 
-cd ~/public_html
-mkdir examples
-chmod 711 examples
-cd examples
-git clone git://github.com/codekiln/S75-Sections.git
+	cd ~/public_html 
+	mkdir examples 
+	chmod 711 examples 
+	cd examples 
+	git clone git://github.com/codekiln/S75-Sections.git
 
-Git will download the latest update to the section
-examples. Test to make sure it is working by opening
-firefox in the appliance and going to:
+Git will then download the latest update to the section
+examples. For now, the correct permissions are stripped from
+the files and directories in git, so you will need to infer
+the correct permissions and use the ls and chmod commands to
+get the examples to display in your appliance. Doing this is
+left as an exercise; the permissions should be the same as
+for the assignments. Once the permissions are right, you can
+test the examples by going to:
 
-http://localhost/~jharvard/examples/S75-Sections/opencyclemap/
+	http://localhost/~jharvard/examples/S75-Sections/opencyclemap/
 
-For now, you will need to update the permissions to
-the files on your own in order to get the examples
-to work right. Doing this is left as an exercise to 
-the reader.
+To update to the latest version of the examples from
+section, run:
 
-In general you want these permissions: 
-directories: 711
-php files: 600
-css, image files, and other public facing files: 644
-
-To update to the latest version of the section
-examples, change directory into the same directory 
-that this README is in, then run: 
-
-git pull
+	cd ~/public_html/examples git pull
 
 This will update to the latest version of the section
 examples.
+
+In general you want these permissions: directories: 711 php
+files: 600 css, image files, and other public facing files:
+644
+
+For the mysql examples, you will need to create the database
+jharvard_example02 using phpmyadmin.
