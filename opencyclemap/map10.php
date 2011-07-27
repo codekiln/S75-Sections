@@ -29,7 +29,7 @@ include('Map'.$fnumber.'.class.php');
 $classname = 'Map' . $fnumber; // Map10
 $thisMap = new $classname(); // new Map10()
 echo $thisMap->getHeader();
-?>  
+?> 
 <img src="<?php echo $cacheName?>" 
     alt="cycle map of latitude $lat, 
       longitude $lon, and zoom $zoom" />
