@@ -75,7 +75,9 @@ class PageState {
 	 * the other direction.
 	 */
 	function toggleParameter( $iframeOrSource, $controlNumber ) {
-		if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')) return;
+		if(! ($iframeOrSource=='iframes'
+			||$iframeOrSource=='sources'
+			||$iframeOrSource=='class')) return;
 		if( $this->isEnabled( $iframeOrSource, $controlNumber ) ) {
 			unset( $this->data[$iframeOrSource][$controlNumber]);
 		} else {
@@ -87,7 +89,8 @@ class PageState {
 		$quer = http_build_query(
 			array(
 				'iframes'=>$this->data['iframes'],
-				'sources'=>$this->data['sources'])) ; 
+				'sources'=>$this->data['sources'],
+				'class'=>$this->data['class'])) ; 
 		return  $this->file . "?" . trim($quer);
 	}
 
@@ -98,7 +101,9 @@ class PageState {
 	 * in the url that fetched this page.
 	 */
 	function isEnabled( $iframeOrSource, $controlNumber ) {
-		if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')){ 
+		if(! ($iframeOrSource=='iframes'
+			||$iframeOrSource=='sources'
+			||$iframeOrSource=='class')){ 
 			return false;
 		}
 		$exists = array_key_exists( $controlNumber, $this->data[$iframeOrSource]);
@@ -137,6 +142,8 @@ class PageState {
 	<?php 
 		for( $i=1; $i <= $maxFnumber; $i++ ){
 			$fname = getExampleName($i);
+			$classFilename = getExampleName($i,"Map","class.php");
+			$hasClass = $state->isEnabled('class',$i);
 			$rowId = "example-$i";
 			$hasSource = $state->isEnabled('sources', $i);
 			$iframe = $state->getIframe($i);
@@ -150,13 +157,25 @@ class PageState {
 				  .location='<?=$fname?>'; return false;"
 			  -->
 			<a href='<?=$state->getToggleQuery('sources',$i).'#'.$rowId."'>";
-			echo ($hasSource)? "hide src" : "show src";	
+			echo "src";	
 			echo "</a><pre ";
 			echo ($hasSource)? ">" : " style='display:none'>";
 			echo htmlspecialchars(file_get_contents($fname)) ;
 			?>
 				</pre>
 		    </td>
+			<td>
+		
+			<?if( file_exists($classFilename) ) {   
+				echo "<a href='"
+					. $state->getToggleQuery('class',$i)
+					. '#'.$rowId."'>";
+				echo ($hasClass)? "class" : "class";	
+				echo "</a><pre ";
+				echo ($hasClass)? ">" : " style='display:none'>";
+				echo htmlspecialchars(file_get_contents($classFilename)) . "</pre>" ;
+			}?>
+			</td>
 			<td>
 				<a href='<?php 
 				echo $state->getToggleQuery('iframes', $i).'#'.$rowId."'>";
