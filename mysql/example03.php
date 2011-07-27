@@ -34,8 +34,8 @@ if( count($_POST) > 0 ) {
 	// that they are not local
 	global $first, $last, $phone, $mobile, $fax, $email, $web;
 	// you could do this ... 
-	$_POST = array_map("htmlspecialchars", $_POST );
-	$_POST = array_map("mysql_real_escape_string", $_POST );
+	//$_POST = array_map("htmlspecialchars", $_POST );
+	//$_POST = array_map("mysql_real_escape_string", $_POST );
 	// or you could do this ...
 	$first=mysql_real_escape_string($_POST['first']);
 	$last=mysql_real_escape_string($_POST['last']);
