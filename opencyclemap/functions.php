@@ -53,3 +53,22 @@ function getCachedFname( $xtile, $ytile, $zoom ) {
   return $cacheName;
 }
 
+function getMap() {
+	require('handy.php');
+	global $fname, $fnumber;
+	// get the file requested in the browser 
+	$fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
+	// get the number before .php
+	$fnumber = preg_replace( "/.*map(\\d+).*/", 
+			"\\1", $fname );
+	/*
+	   all the code from last time is contained in its own
+	   class.  the class is relative to the number contained
+	   in this file.  First, source the file that has the
+	   class. 
+	 */
+	include('Map'.$fnumber.'.class.php'); 
+	// then, instantiate the new class.
+	$classname = 'Map' . $fnumber; 
+	return new $classname(); 
+}

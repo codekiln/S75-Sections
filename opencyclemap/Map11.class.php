@@ -1,5 +1,5 @@
 <?php
-class Map10 {
+class Map11 {
 
 	function __construct() {
 		global $queryUrl, $zoom, $lat, $lon, $xTile, 
@@ -86,12 +86,13 @@ class Map10 {
 		return $cacheName;
 	}
 
-	function getHeader() {
+	function getHeader($insert = "") {
         global $fnumber, $purpose;
 		$header = "<!DOCTYPE HTML>
 			<html>
 	    		<head>
 	        		<title>map$fnumber.php</title>
+                    $insert
 		    	</head>
                 <body>
                     <p>$purpose</p>
@@ -152,5 +153,29 @@ class Map10 {
             name=\"y\" value=\"$yTile\"/>
         ";
     }
+
+	function getNavigation() {
+		global $fname;
+		$navigation = "
+			<form action='$fname' method='get'>
+			<input type='submit' name='north' 
+				value='North'/>
+			<input type='submit' name='west' 
+				value='West'/>
+			<input type='submit' name='east' 
+				value='East'/>
+			<input type='submit' name='south' 
+				value='South'/>";
+		$navigation .= $this->getRequiredHiddenInputs();
+		$navigation .= "</form>";
+		return $navigation;
+	}
+
+	function getImage() {
+		global $cacheName, $lat, $lon, $zoom;
+		return "<img src='$cacheName' 
+			alt='cycle map of latitude $lat, 
+			longitude $lon, and zoom $zoom' />";
+	}
 
 }

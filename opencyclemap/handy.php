@@ -22,4 +22,3 @@ function printGet() {
 		pr( $_GET );
 	}
 }
-

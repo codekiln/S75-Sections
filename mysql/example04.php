@@ -14,7 +14,7 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
 /** THIS IS NEW **/
 $user="jharvard";
 $password="crimson";
-$database="jharvard_example1";
+$database="jharvard_example2";
 
 if( count($_POST) > 0 ) {
 	$first=$_POST['first'];

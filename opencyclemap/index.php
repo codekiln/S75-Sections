@@ -137,7 +137,6 @@ class PageState {
   </head>
   <body>
   	<h1>Examples</h1>
-	<? printGet(); ?>
 	<table border="1">
 	<?php 
 		for( $i=1; $i <= $maxFnumber; $i++ ){
@@ -149,8 +148,7 @@ class PageState {
 			$iframe = $state->getIframe($i);
 			?>
 			<tr id="<?=$rowId?>">
-			<td><?=$fname?></td>
-			<td><a target='blank' href='<?= $fname?>'>new tab</a></td>
+			<td><a target='blank' href='<?= $fname?>'><?=$fname?></a></td>
 			<td>
 			<!-- for later: 
 				  onclick="window.frames['<?=$fname?>']
@@ -191,5 +189,6 @@ class PageState {
 				<? } ?>
 			</td>
 		<?}?>
+	<? printGet(); ?>
   </body>
 </html>
