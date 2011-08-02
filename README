@@ -32,9 +32,9 @@ This will update to the latest version of the section
 examples.
 
 In general you want these permissions: 
-  directories: 711 
-  php files: 600 
-  css, image files, and other public facing files: 644
+    directories: 711 
+    php files: 600 
+    css, image files, and other public facing files: 644
 
 For the mysql examples, you will need to create the database
 jharvard_example02 using phpmyadmin.

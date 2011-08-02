@@ -1,9 +1,15 @@
 <?php
-class Map13 {
+class Map14 {
 
 	function __construct() {
 		global $queryUrl, $zoom, $lat, $lon, $xTile, 
 			   $yTile, $cacheName, $fname, $fnumber;
+
+		define('IS_AJAX', 
+		  isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+		  && strtolower(
+			$_SERVER['HTTP_X_REQUESTED_WITH']) 
+			== 'xmlhttprequest');
 		// get the GET parameters
 		// default: ?zoom=15&lat=42.37447&lon=-71.11952
 		$queryUrl ="http://www.opencyclemap.org/search.php?q=";
@@ -107,7 +113,7 @@ class Map13 {
         if( $exampleParams != "" ) {
             $footer .= "<p>
                     Example parameters: 
-                    <a href=\"$fname.$exampleParams\">
+                    <a href=\"$fname$exampleParams\">
                     $exampleParams</a>
                     </p>
             ";
@@ -150,8 +156,8 @@ class Map13 {
 				'zoom'=>$zoom,
 				'lat'=>$lat,
 				'lon'=>$lon,
-				'xTile'=>$xTile,
-				'yTile'=>$yTile);
+				'x'=>$xTile,
+				'y'=>$yTile);
 		return json_encode( $data ); 
 	}
 
@@ -169,26 +175,30 @@ class Map13 {
 
 	function getNavigation() {
 		global $fname;
+		$navs = array( "north", "south", "east", "west");
 		$navigation = "
-			<form action='$fname' method='get'>
-			<input type='submit' name='north' 
-				value='North'/>
-			<input type='submit' name='west' 
-				value='West'/>
-			<input type='submit' name='east' 
-				value='East'/>
-			<input type='submit' name='south' 
-				value='South'/>";
+			<form action='$fname' method='get'>";
+		foreach( $navs as $nav ) {
+			$upperCaseNav = ucfirst($nav);
+			$navigation .= 
+				"<input type='submit'
+					name='$nav'
+					value='$upperCaseNav'
+				onclick=\"myMap.loadNewTile('$nav'); return false;\" />";
+		}
 		$navigation .= $this->getRequiredHiddenInputs();
 		$navigation .= "</form>";
 		return $navigation;
 	}
 
 	function getImage() {
-		global $cacheName, $lat, $lon, $zoom;
-		return "<img src='$cacheName' 
+		global $cacheName, $lat, $lon, $zoom, $xTile,
+			$yTile;
+		return "<div id='theMap'>
+			<img id='tile-$xTile-$yTile-$zoom' 
+			src='$cacheName' 
 			alt='cycle map of latitude $lat, 
-			longitude $lon, and zoom $zoom' />";
+			longitude $lon, and zoom $zoom' /></div>";
 	}
 
 }

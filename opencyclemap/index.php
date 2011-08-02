@@ -77,7 +77,9 @@ class PageState {
 	function toggleParameter( $iframeOrSource, $controlNumber ) {
 		if(! ($iframeOrSource=='iframes'
 			||$iframeOrSource=='sources'
-			||$iframeOrSource=='class')) return;
+			||$iframeOrSource=='class'
+			||$iframeOrSource=='js'
+			)) return;
 		if( $this->isEnabled( $iframeOrSource, $controlNumber ) ) {
 			unset( $this->data[$iframeOrSource][$controlNumber]);
 		} else {
@@ -90,7 +92,9 @@ class PageState {
 			array(
 				'iframes'=>$this->data['iframes'],
 				'sources'=>$this->data['sources'],
-				'class'=>$this->data['class'])) ; 
+				'class'=>$this->data['class'],
+				'js'=>$this->data['js']
+				)) ; 
 		return  $this->file . "?" . trim($quer);
 	}
 
@@ -103,9 +107,9 @@ class PageState {
 	function isEnabled( $iframeOrSource, $controlNumber ) {
 		if(! ($iframeOrSource=='iframes'
 			||$iframeOrSource=='sources'
-			||$iframeOrSource=='class')){ 
-			return false;
-		}
+			||$iframeOrSource=='class'
+			||$iframeOrSource=='js'
+			)) return;
 		$exists = array_key_exists( $controlNumber, $this->data[$iframeOrSource]);
 		return $exists; 
 	}
@@ -142,9 +146,11 @@ class PageState {
 		for( $i=1; $i <= $maxFnumber; $i++ ){
 			$fname = getExampleName($i);
 			$classFilename = getExampleName($i,"Map","class.php");
+			$jsFilename = getExampleName($i,"map","js");
 			$hasClass = $state->isEnabled('class',$i);
 			$rowId = "example-$i";
 			$hasSource = $state->isEnabled('sources', $i);
+			$hasJs = $state->isEnabled('js', $i);
 			$iframe = $state->getIframe($i);
 			?>
 			<tr id="<?=$rowId?>">
@@ -168,10 +174,21 @@ class PageState {
 				echo "<a href='"
 					. $state->getToggleQuery('class',$i)
 					. '#'.$rowId."'>";
-				echo ($hasClass)? "class" : "class";	
+				echo ($hasClass)? "$classFilename" : "class";	
 				echo "</a><pre ";
 				echo ($hasClass)? ">" : " style='display:none'>";
 				echo htmlspecialchars(file_get_contents($classFilename)) . "</pre>" ;
+			}?>
+			</td>
+			<td>
+			<?if( file_exists($jsFilename) ) {   
+				echo "<a href='"
+					. $state->getToggleQuery('js',$i)
+					. '#'.$rowId."'>";
+				echo ($hasJs)? "$jsFilename" : "js";	
+				echo "</a><pre ";
+				echo ($hasJs)? ">" : " style='display:none'>";
+				echo htmlspecialchars(file_get_contents($jsFilename)) . "</pre>" ;
 			}?>
 			</td>
 			<td>
