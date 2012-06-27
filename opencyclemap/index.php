@@ -12,7 +12,6 @@
   * Created: July 20, 2011
   **/ 
 require('handy.php');
-
 $state = new PageState();
 // get the number of examples in the current directory
 $maxFnumber = getMaximumExampleNumber('.','map');

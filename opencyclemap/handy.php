@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR|E_PARSE);
 /**
   * tiny functions to include in examples
   * Author: Peter Nore
