@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('handy.php');
-$purpose = 'Demonstrate the $_SESSION superglobal.';
+$purpose = 'Demonstrate the $_SESSION superglobal, pt 2.';
 /**
   * If your example requires some parameters, put 
   * a set of example parameters in here for the link
@@ -29,16 +29,14 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
 <p><?=$purpose?></p>
 <div id="example">
 <?php 
-$_SESSION["first_name"] = 'Peter';
-$_SESSION["last_name"] = 'Nore';
 ?> 
-<h1>these session variables were set at the top of the page:</h1>
+<h1>these session variables were NOT set at the top of this page:</h1>
 <table>
 <tr><th>variable name</th><th>variable value</th></tr>
 <tr><td>$_SESSION["first_name"]</td><td><?php echo $_SESSION["first_name"]; ?></td></tr>
 <tr><td>$_SESSION["last_name"]</td><td><?php echo $_SESSION["last_name"]; ?></td></tr>
 </table>
-<a href="example02.php">click here to go to gexample02.php to see if the variables still exist</a>
+<p>As you can see, the session still exists and the variables still hold information.</p>
 <?php /** end of example div ****************/ ?></div>
 </body>
 </html>
