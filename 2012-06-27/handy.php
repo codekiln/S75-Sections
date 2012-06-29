@@ -19,7 +19,7 @@ function pr($arr) {
   */
 function printGet() {
 	if( count($_GET) > 0 ) {
-		echo "<h2>Query: ?" . $_SERVER['QUERY_STRING'] . "</h2>";
+		echo "<h2>Page was queried with: ?" . $_SERVER['QUERY_STRING'] . "</h2>";
 		pr( $_GET );
 	}
 }

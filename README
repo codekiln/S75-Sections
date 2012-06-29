@@ -1,42 +1,43 @@
-https://github.com/codekiln/S75-Sections
-Sections for S-75, Building Dynamic Websites
+https://github.com/codekiln/S75-Sections Sections for
+S-75, Building Dynamic Websites
 
-The examples from sections are available at
-https://github.com/codekiln/S75-Sections. To download this
-directory and keep the examples sync'd to your appliance, do
-this: 
+If this is your first time running examples in the CS50
+Appliance, you'll need to set up your environment in the
+command line: 
 
-	cd ~/public_html 
-	mkdir examples 
-	chmod 711 examples 
-	cd examples 
-	git clone git://github.com/codekiln/S75-Sections.git
+   cd ~ mkdir public_html chmod 711 public_html
+
+To download the examples and keep them sync'd to your
+appliance, enter each of these commands: 
+
+   cd ~/public_html git clone
+   git://github.com/codekiln/S75-Sections.git find
+   ~/public_html -type d -print0 | xargs -0 chmod 755
 
 Git will then download the latest update to the section
-examples. For now, the correct permissions are stripped from
-the files and directories in git, so you will need to infer
-the correct permissions and use the ls and chmod commands to
-get the examples to display in your appliance. Doing this is
-left as an exercise; the permissions should be the same as
-for the assignments.* Once the permissions are right, you can
-test the examples by going to:
+examples.  you may need to infer the correct permissions
+and use the ls and chmod commands to get the examples to
+display in your appliance.  Once the permissions are
+right, you can see the examples by going to:
 
-	http://localhost/~jharvard/examples/S75-Sections/opencyclemap/
+   http://localhost/~jharvard/examples/S75-Sections/
 
 To update to the latest version of the examples from
-section, run:
+section:
 
-	cd ~/public_html/examples git pull
+   cd ~/public_html/S75-Sections git pull
 
 This will update to the latest version of the section
 examples.
 
-In general you want these permissions: 
-    directories: 711 
-    php files: 600 
-    css, image files, and other public facing files: 644
+In general you want these permissions: directories: 711
+php files: 600 css, image files, and other public facing
+files: 644
 
-For the mysql examples, you will need to create the database
-jharvard_example02 using phpmyadmin.
+For the mysql examples, you will need to create the
+database jharvard_example02 using phpmyadmin.
 
-*tip:  find . -type d -print0 | xargs -0 chmod 755
+The example source code will look best in vim if you
+
+   cd ~/public_html/S75-Sections cp .vimrc ~
+
