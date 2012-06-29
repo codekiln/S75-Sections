@@ -163,10 +163,12 @@ class PageState {
 				echo ($iframe) ? "hide" : "show";
 				echo "</a>";
 				if($iframe) { ?>
-					<form action="<?=$state->getQuery().'#'.$rowId?>" method="get">
+			<!--		<form action="<?=$state->getQuery().'#'.$rowId?>" method="get">
 						query parameters: <input type="text" name="iframes[<?=$i?>]" value="<?=$iframe?>"/>
-					</form>
-					<iframe src='<?=$fname . $iframe?>' name='<?=$fname?>'>
+					</form>-->
+					<iframe 
+                    <?php if($iframe) echo 'style="width:500px;height:500px;"';?>
+                    src='<?=$fname . $iframe?>' name='<?=$fname?>'>
 						<p>Your browser does not support iframes.</p>
 					</iframe>
 				<? } ?>

@@ -32,7 +32,7 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
 $_SESSION["first_name"] = 'Peter';
 $_SESSION["last_name"] = 'Nore';
 ?> 
-<h1>these session variables were set at the top of the page:</h1>
+<h1>these session variables were set at the top of the page in PHP:</h1>
 <table>
 <tr><th>variable name</th><th>variable value</th></tr>
 <tr><td>$_SESSION["first_name"]</td><td><?php echo $_SESSION["first_name"]; ?></td></tr>
