@@ -15,12 +15,12 @@ appliance, enter each of these commands:
    ~/public_html -type d -print0 | xargs -0 chmod 755
 
 Git will then download the latest update to the section
-examples.  you may need to infer the correct permissions
+examples.  You may need to infer the correct permissions
 and use the ls and chmod commands to get the examples to
 display in your appliance.  Once the permissions are
-right, you can see the examples by going to:
+right, you can see the each section by going to:
 
-   http://localhost/~jharvard/examples/S75-Sections/
+   http://localhost/~jharvard/S75-Sections/
 
 To update to the latest version of the examples from
 section:
@@ -28,7 +28,10 @@ section:
    cd ~/public_html/S75-Sections git pull
 
 This will update to the latest version of the section
-examples.
+examples. Each time you pull down a fresh version, you will have
+to change the permissions. 
+
+   ~/public_html -type d -print0 | xargs -0 chmod 755
 
 In general you want these permissions: directories: 711
 php files: 600 css, image files, and other public facing
@@ -41,3 +44,49 @@ The example source code will look best in vim if you
 
    cd ~/public_html/S75-Sections cp .vimrc ~
 
+Other Git Tricks for the CS50 Appliance
+=======================================
+
+If you have never used a source code manager before, Git will
+change your life as a programmer. Take an hour and watch this
+video from YUI theater to get a better sense of how life is different for "software engineers" than it is for "hackers." 
+
+http://www.yuiblog.com/blog/2011/06/09/video-f2esummit2011-donnelly/
+
+My favorite git workflow: 
+
+    git checkout -b "new_feature"
+    git add -A
+    git commit -m "finished new_feature"
+    git checkout master
+    git merge "new_feature"
+    git branch -D "new_feature"
+
+Once you decide to really utilize git, you will be branching and
+merging all the time. When that time comes, it will become handy
+to know what branch you are on. For that, I recommend two tools,
+Git Command-Line Autocomplete and Git Branch in Bash Prompt. 
+
+Git Command-Line Autocomplete
+-----------------------------
+
+    curl "https://raw.github.com/git/git/master/contrib/completion/git-completion.bash" -o ~/.git-completion.bash
+    echo "source ~/.git-completion.bash" >> ~/.bash_profile
+    source ~/.bash_profile
+
+Git Branch in Bash Prompt
+-------------------------
+
+In the CS50 Appliance, paste the following into bash and hit return.
+
+    export PS1='\[\e[1;33m\] \w\[\e[1;36m\]$(git branch &>/dev/null; if [ $? -eq 0 ]; then echo " ($(git branch | grep '^*' |sed s/\*\ //))"; fi) \[\e[1;37m\]$PS1_END_SIGN\[\e[00m\] '
+
+If you don't like the way it looks, just exit the terminal and
+open it up again.  Do you like the way it looks? Then edit
+~/.bash_profile and add that line to the end, save, and enter:
+
+    source ~/.bash_profile
+
+Now you have the name of your git branch in your bash prompt. If
+you are curious about how this display stuff works, google "Bash
+PS1". 
