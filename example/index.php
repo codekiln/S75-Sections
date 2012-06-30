@@ -1,5 +1,29 @@
 <?php
 /**
+  * tiny functions to include in examples
+  * Author: Peter Nore
+  * Created: July 20, 2011
+  */
+
+/**
+ * Handy print array function for debugging
+ */
+function pr($arr) {
+	echo '<pre>', htmlspecialchars(print_r($arr, true)), "</pre>\n";
+}
+
+/**
+  * Handy function that will print the GET params
+  * if there are any
+  */
+function printGet() {
+	if( count($_GET) > 0 ) {
+		echo "<h2>Query: ?" . $_SERVER['QUERY_STRING'] . "</h2>";
+		pr( $_GET );
+	}
+}
+
+/**
   * File for displaying php examples for teaching
   * purposes. To display six examples (or however many)
   * put in a directory, create examples named 
@@ -11,7 +35,6 @@
   * Author: Peter Nore
   * Created: July 20, 2011
   **/ 
-require('handy.php');
 
 $state = new PageState();
 // get the number of examples in the current directory
@@ -86,7 +109,7 @@ class PageState {
 	function getQuery() {
 		$quer = http_build_query(
 			array(
-				'iframes'=>$this->data['iframes'],
+				'iframes'=>@$this->data['iframes'],
 				'sources'=>$this->data['sources'])) ; 
 		return  $this->file . "?" . trim($quer);
 	}
@@ -101,7 +124,9 @@ class PageState {
 		if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')){ 
 			return false;
 		}
-		$exists = array_key_exists( $controlNumber, $this->data[$iframeOrSource]);
+		$exists = isset($this->data[$iframeOrSource])
+      ?array_key_exists(
+            $controlNumber, $this->data[$iframeOrSource]) : false;
 		return $exists; 
 	}
 
@@ -132,7 +157,7 @@ class PageState {
   </head>
   <body>
   	<h1>Examples</h1>
-	<? printGet(); ?>
+	<? //printGet(); ?>
 	<table border="1">
 	<?php 
 		for( $i=1; $i <= $maxFnumber; $i++ ){
@@ -163,10 +188,10 @@ class PageState {
 				echo ($iframe) ? "hide" : "show";
 				echo "</a>";
 				if($iframe) { ?>
-					<form action="<?=$state->getQuery().'#'.$rowId?>" method="get">
+					<!--<form action="<?=$state->getQuery().'#'.$rowId?>" method="get">
 						query parameters: <input type="text" name="iframes[<?=$i?>]" value="<?=$iframe?>"/>
-					</form>
-					<iframe src='<?=$fname . $iframe?>' name='<?=$fname?>'>
+					</form>-->
+					<iframe style="width:500px;height:500px;" src='<?=$fname . $iframe?>' name='<?=$fname?>'>
 						<p>Your browser does not support iframes.</p>
 					</iframe>
 				<? } ?>

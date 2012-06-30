@@ -5,7 +5,6 @@ $purpose = "A simple statement about example purpose"
 
 /* {{{ BEGIN EXAMPLE BOILERPLATE */
 
-require('handy.php');
 // get this file's name
 $fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
 ?>
@@ -15,8 +14,8 @@ $fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
   </head>
   <body>
 <h1><?php echo  $fname ?></h1><?php
-	printGet(); 
-    if(strlen($exampleParams)>0) { 
+	//printGet(); 
+    if(strlen(@$exampleParams)>0) { 
             echo "Example parameters: 
                 <a href='{$fname}{$exampleParams}'>
                 $exampleParams</a>";
@@ -29,7 +28,7 @@ $fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
 
 ?>
 <div id="example">
-	<p>Your great example code goes here</p>
+	<p>Your great example code goes here.</p>
 </div><!-- end of example div -->
 </body>
 </html>
