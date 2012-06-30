@@ -11,7 +11,6 @@
   * Author: Peter Nore
   * Created: July 20, 2011
   **/ 
-require('handy.php');
 
 $state = new PageState();
 // get the number of examples in the current directory
@@ -86,7 +85,7 @@ class PageState {
    function getQuery() {
       $quer = http_build_query(
          array(
-            'iframes'=>$this->data['iframes'],
+            'iframes'=>@$this->data['iframes'],
             'sources'=>$this->data['sources'])) ; 
       return  $this->file . "?" . trim($quer);
    }
@@ -101,7 +100,9 @@ class PageState {
       if(! ($iframeOrSource=='iframes'||$iframeOrSource=='sources')){ 
          return false;
       }
-      $exists = array_key_exists( $controlNumber, $this->data[$iframeOrSource]);
+      $exists = isset($this->data[$iframeOrSource]) ?
+          (array_key_exists( $controlNumber,
+                  $this->data[$iframeOrSource])) : false;
       return $exists; 
    }
 
@@ -136,7 +137,6 @@ class PageState {
    <h2><a
    href="http://prezi.com/j6oeo9karhiw/s75-section-2012-06-27-wed/">presentation
    slideshow</a></h2>
-   <? //printGet(); ?>
    <table border="1">
    <?php 
       for( $i=1; $i <= $maxFnumber; $i++ ){
