@@ -1,5 +1,11 @@
-https://github.com/codekiln/S75-Sections Sections for
-S-75, Building Dynamic Websites
+Sections for S-75, Building Dynamic Websites
+============================================
+
+https://github.com/codekiln/S75-Sections 
+
+All instructions of this document assume you are working in
+version of the CS50 Appliance that your class is using: 
+https://manual.cs50.net/CS50_Appliance_3
 
 If this is your first time running examples in the CS50
 Appliance, you'll need to set up your environment in the
@@ -7,7 +13,7 @@ command line:
 
    cd ~ mkdir public_html chmod 711 public_html
 
-To download the examples and keep them sync'd to your
+To download these examples and keep them sync'd to your
 appliance, enter each of these commands: 
 
    cd ~/public_html git clone
@@ -18,7 +24,8 @@ Git will then download the latest update to the section
 examples.  You may need to infer the correct permissions
 and use the ls and chmod commands to get the examples to
 display in your appliance.  Once the permissions are
-right, you can see the each section by going to:
+right, you can see each section's example folder by opening a
+browser in the appliance and going to:
 
    http://localhost/~jharvard/S75-Sections/
 
@@ -38,7 +45,7 @@ php files: 600 css, image files, and other public facing
 files: 644
 
 For the mysql examples, you will need to create the
-database jharvard_example02 using phpmyadmin.
+database `jharvard_example02` using phpmyadmin.
 
 The example source code will look best in vim if you
 
