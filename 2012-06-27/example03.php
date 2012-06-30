@@ -9,7 +9,6 @@ session_start();
 
 /* {{{ BEGIN EXAMPLE BOILERPLATE */
 
-require('handy.php');
 // get this file's name
 $fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
 ?>
@@ -18,21 +17,15 @@ $fname = basename(htmlspecialchars($_SERVER['PHP_SELF']));
     <title><?php echo $fname?></title>
   </head>
   <body>
-<h1><?php echo  $fname ?></h1><?php
-	/*printGet(); 
-    if(strlen($exampleParams)>0) { 
-            echo "Example parameters: 
-                <a href='{$fname}{$exampleParams}'>
-                $exampleParams</a>";
-        }*/ ?>
+<h1><?php echo  $fname ?></h1>
 <p><?php echo $purpose ?></p>
 <div id="example"><?php // beginning of example div ?>
 <?php 
 
 /* END EXAMPLE BOILERPLATE }}} */
 
-define( CORRECT_USERNAME, 'registeredUser');
-define( CORRECT_PASSWORD, 'trustno1');
+define( 'CORRECT_USERNAME', 'registeredUser');
+define( 'CORRECT_PASSWORD', 'trustno1');
 
 $user_is_logged_in = 
     isset($_SESSION['logged_in'])

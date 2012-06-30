@@ -1,6 +1,5 @@
 <?php
 session_start();
-require('handy.php');
 $purpose = 'Demonstrate the $_SESSION superglobal.';
 /**
   * If your example requires some parameters, put 
@@ -20,7 +19,6 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
   </head>
   <body>
 <h1><?= $fname ?></h1>
-	<? printGet(); ?>
     <?php if(strlen($exampleParams)>0) { ?>
 	Example parameters: 
 <a href="<?=$fname.$exampleParams?>">
