@@ -78,7 +78,9 @@ Git Command-Line Autocomplete
 -----------------------------
 
     curl "https://raw.github.com/git/git/master/contrib/completion/git-completion.bash" -o ~/.git-completion.bash
+
     echo "source ~/.git-completion.bash" >> ~/.bash_profile
+
     source ~/.bash_profile
 
 Git Branch in Bash Prompt
