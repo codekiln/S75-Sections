@@ -11,14 +11,14 @@ If this is your first time running examples in the CS50
 Appliance, you'll need to set up your environment in the
 command line: 
 
-   cd ~ mkdir public_html chmod 711 public_html
+    cd ~ mkdir public_html chmod 711 public_html
 
 To download these examples and keep them sync'd to your
 appliance, enter each of these commands: 
 
-   cd ~/public_html git clone
-   git://github.com/codekiln/S75-Sections.git find
-   ~/public_html -type d -print0 | xargs -0 chmod 755
+    cd ~/public_html git clone
+    git://github.com/codekiln/S75-Sections.git find
+    ~/public_html -type d -print0 | xargs -0 chmod 755
 
 Git will then download the latest update to the section
 examples.  You may need to infer the correct permissions
@@ -27,18 +27,18 @@ display in your appliance.  Once the permissions are
 right, you can see each section's example folder by opening a
 browser in the appliance and going to:
 
-   http://localhost/~jharvard/S75-Sections/
+    http://localhost/~jharvard/S75-Sections/
 
 To update to the latest version of the examples from
 section:
 
-   cd ~/public_html/S75-Sections git pull
+    cd ~/public_html/S75-Sections git pull
 
 This will update to the latest version of the section
 examples. Each time you pull down a fresh version, you will have
 to change the permissions. 
 
-   ~/public_html -type d -print0 | xargs -0 chmod 755
+    ~/public_html -type d -print0 | xargs -0 chmod 755
 
 In general you want these permissions: directories: 711
 php files: 600 css, image files, and other public facing
@@ -49,7 +49,7 @@ database `jharvard_example02` using phpmyadmin.
 
 The example source code will look best in vim if you
 
-   cd ~/public_html/S75-Sections cp .vimrc ~
+    cd ~/public_html/S75-Sections cp .vimrc ~
 
 Other Git Tricks for the CS50 Appliance
 =======================================
