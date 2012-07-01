@@ -36,7 +36,8 @@ $_SESSION["last_name"] = 'Nore';
 <tr><td>$_SESSION["first_name"]</td><td><?php echo $_SESSION["first_name"]; ?></td></tr>
 <tr><td>$_SESSION["last_name"]</td><td><?php echo $_SESSION["last_name"]; ?></td></tr>
 </table>
-<a href="example02.php">click here to go to gexample02.php to see if the variables still exist</a>
+<h2>go to gexample02.php to see if the variables still exist
+because your session persisted from this page to that page</h2>
 <?php /** end of example div ****************/ ?></div>
 </body>
 </html>

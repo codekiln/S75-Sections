@@ -33,9 +33,9 @@ $fnumber = preg_replace( "/.*map(\\d+).php/",
 <table>
 <tr><th>variable name</th><th>variable value</th></tr>
 <tr><td>$_SESSION["first_name"]</td><td><?php echo
-$_SESSION["first_name"]; ?></td></tr>
+@$_SESSION["first_name"]; ?></td></tr>
 <tr><td>$_SESSION["last_name"]</td><td><?php echo
-$_SESSION["last_name"]; ?></td></tr>
+@$_SESSION["last_name"]; ?></td></tr>
 </table>
 <h1>As you can see, the session still exists 
 and the variables still hold information.</h1>
