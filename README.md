@@ -32,7 +32,8 @@ browser in the appliance and going to:
 To update to the latest version of the examples from
 section:
 
-    cd ~/public_html/S75-Sections git pull
+    cd ~/public_html/S75-Sections 
+    git pull
 
 This will update to the latest version of the section
 examples. Each time you pull down a fresh version, you will have
@@ -78,9 +79,7 @@ Git Command-Line Autocomplete
 -----------------------------
 
     curl "https://raw.github.com/git/git/master/contrib/completion/git-completion.bash" -o ~/.git-completion.bash
-
     echo "source ~/.git-completion.bash" >> ~/.bash_profile
-
     source ~/.bash_profile
 
 Git Branch in Bash Prompt
