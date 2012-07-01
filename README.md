@@ -17,8 +17,8 @@ To download these examples and keep them sync'd to your
 appliance, enter each of these commands: 
 
     cd ~/public_html git clone
-    git://github.com/codekiln/S75-Sections.git find
-    ~/public_html -type d -print0 | xargs -0 chmod 755
+    git://github.com/codekiln/S75-Sections.git 
+    find ~/public_html -type d -print0 | xargs -0 chmod 755
 
 Git will then download the latest update to the section
 examples.  You may need to infer the correct permissions
