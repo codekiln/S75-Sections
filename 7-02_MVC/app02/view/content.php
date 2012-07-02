@@ -1,6 +1,6 @@
         <div class='container'>
         <?php
-          foreach( $data['result'] as $post ) {
+          foreach( $data['query'] as $post ) {
             // data will be available in $post var
             include( 'post.php' );
           }
