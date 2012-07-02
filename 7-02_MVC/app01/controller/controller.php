@@ -7,5 +7,8 @@ $data = array( 'query' => '/rss/channel/item' );
 // query
 include(M . "model.php");
 
+
 // now the $data var contains the query and the result
+//  ... see?
+//echo "<pre>"; print_r($data); echo "</pre>";
 include(V . "view.php");

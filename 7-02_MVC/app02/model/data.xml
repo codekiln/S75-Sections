@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Blog Title: MVC Blog</title>
+    <description>Blog Description: Exploring MVC since 2002</description>
+    <item>
+        <title>Post Title: Intro to MVC</title>
+        <author>P. Myer Nore</author>
+        <pubDate>Tue, 03 Jun 2003 09:39:21 GMT</pubDate>
+        <description><![CDATA[ <p><h2>Intro to MVC</h2></p><p>Web
+        Developers call dynamic websites <strong>web
+        applications</strong> because from the coder's perspective,
+        <strong>dynamic websites are applications that run on a web
+        server</strong>.</p><p>Modern applications follow <strong>design
+        patterns</strong>. One very common design pattern is Model, View,
+        Controller, or MVC.</p><p>To follow MVC when writing an
+        application, you <em>separate your code</em> according to the
+        function of the code: <ul> <li><strong>Model</strong> code stores
+        the application data and <em>models</em> your application's
+        domain. For example, if you were writing a blogging application,
+        the Model code would determine what data needs to be stored about
+        a Blog Post, and take responsibility for storing and retrieving
+        Blog Post data.</li> <li><strong>View</strong> code produces
+        anything <em>viewable</em> by the site visitor. For example, in a
+        blogging application, the View code would turn a Blog Post's data
+        into HTML and CSS, which would then be rendered in the site
+        viewer's web browser and determine how the site appears to the
+        visitor.</li> <li><strong>Controller</strong> code receives all
+        of site visitor's clicks and other input, and uses them to help
+        the user <em>control</em> your application.  For example, in a
+        blogging site, if a user clicks on 'next post', the controller
+        will receive that click, fetch the appropriate Model from the
+        model code, send and send it to the View to turn it into the HTML
+        that the site viewer's browser will render for the Site Viewer's
+        viewing pleasure.</li> </ul> </p> 
+            ]]>
+        </description>
+    </item>
+    <item>
+        <title>Post Title: Intro to MVC</title>
+        <author>P. Myer Nore</author>
+        <pubDate>Tue, 20 May 2003 08:56:02 GMT</pubDate>
+        <description><![CDATA[ <p><h2>Intro to MVC</h2></p><p>Web
+        Developers call dynamic websites <strong>web
+        applications</strong> because from the coder's perspective,
+        <strong>dynamic websites are applications that run on a web
+        server</strong>.</p><p>Modern applications follow <strong>design
+        patterns</strong>. One very common design pattern is Model, View,
+        Controller, or MVC.</p><p>To follow MVC when writing an
+        application, you <em>separate your code</em> according to the
+        function of the code: <ul> <li><strong>Model</strong> code stores
+        the application data and <em>models</em> your application's
+        domain. For example, if you were writing a blogging application,
+        the Model code would determine what data needs to be stored about
+        a Blog Post, and take responsibility for storing and retrieving
+        Blog Post data.</li> <li><strong>View</strong> code produces
+        anything <em>viewable</em> by the site visitor. For example, in a
+        blogging application, the View code would turn a Blog Post's data
+        into HTML and CSS, which would then be rendered in the site
+        viewer's web browser and determine how the site appears to the
+        visitor.</li> <li><strong>Controller</strong> code receives all
+        of site visitor's clicks and other input, and uses them to help
+        the user <em>control</em> your application.  For example, in a
+        blogging site, if a user clicks on 'next post', the controller
+        will receive that click, fetch the appropriate Model from the
+        model code, send and send it to the View to turn it into the HTML
+        that the site viewer's browser will render for the Site Viewer's
+        viewing pleasure.</li> </ul> </p> 
+   ]]></description>
+    </item>
+  </channel>
+</rss>

@@ -10,7 +10,7 @@ which would have obliterated it's permissions. You are able to
 change file permissions in PHP, so I'm going to do that here to
 make sure you are able to view the subdirectories of this folder. 
 */
-
 require('../permissions.php');
+
 // now start the controller
 require(C . "controller.php");
