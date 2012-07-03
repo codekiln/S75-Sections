@@ -1,6 +1,6 @@
         <div class='container'>
         <?php
-        // NEW: include pagination links
+        // NEW app03: include pagination links
         include(V . "pagination.php");
 
         // NEW: changed the variable name to posts_to_display
