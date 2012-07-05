@@ -98,3 +98,33 @@ open it up again.  Do you like the way it looks? Then edit
 Now you have the name of your git branch in your bash prompt. If
 you are curious about how this display stuff works, google "Bash
 PS1". 
+
+Web Resources
+=============
+
+Regular Expressions
+-------------------
+
+[This][http://gskinner.com/RegExr/] ajaxy regex selector
+is one of many useful tools I use to for quick screen scraping. 
+[Here][http://chris.photobooks.com/regex/default.htm] is
+another one by Chris Neilson.
+
+XPath
+-----
+[This][http://www.bit-101.com/xpath/] is currently my
+favorite online XPath tool.
+
+[Chris Neilson's XPath and XML
+Tools][http://chris.photobooks.com/xml/default.htm] works
+really well for conducting xPath queries online. He also
+has a tool for [visualizing xpath
+queries][http://chris.photobooks.com/regex/default.htm]
+and [visualizing
+json][http://chris.photobooks.com/json/default.htm]. 
+
+I find [Stylus Studio's XPath
+reference][http://www.stylusstudio.com/docs/v62/d_xpath15.html]
+pretty helpful when I'm searching for an XPath function.
+
+
