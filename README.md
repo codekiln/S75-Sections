@@ -99,11 +99,8 @@ Now you have the name of your git branch in your bash prompt. If
 you are curious about how this display stuff works, google "Bash
 PS1". 
 
-Web Resources
-=============
-
 Regular Expressions
--------------------
+===================
 
 [This][http://gskinner.com/RegExr/] ajaxy regex selector
 is one of many useful tools I use to for quick screen scraping. 
@@ -111,7 +108,20 @@ is one of many useful tools I use to for quick screen scraping.
 another one by Chris Neilson.
 
 XPath
------
+=====
+
+Google Chrome
+-------------
+If you use Google's Chrome browser, the
+[Scraper][https://chrome.google.com/webstore/detail/mbigbapnjcgaffohmbkdlecaccepngjd]
+tool is really great at helping extract an XPath used to
+find a particular element.
+
+Also, Google Chrome's DOM displayer has XPath support
+baked into its search field - just press Ctrl+Shift+C to
+bring up the developer console, then start typing an xpath
+expression to bring up a match.
+
 [This][http://www.bit-101.com/xpath/] is currently my
 favorite online XPath tool.
 
