@@ -3,19 +3,87 @@
   <channel>
     <title>S75 Sections</title>
     <description>
-    Examples for S75, Building Dynamic Websites
+    7/9/2012: Objects, XPath, Regular Expressions
     </description>
     <item>
-        <title>Objects, XPath, Regular Expressions</title>
-        <guid>1</guid>
+        <title>MVC Context from Last Section</title>
         <author>P. Myer Nore</author>
         <pubDate>Sat, 07 Jul 2012 14:24:21 GMT</pubDate>
         <description><![CDATA[
-        <h3>Last Time</h3> 
+        <p>
+        In last section, we talked about <strong>Model, View,
+        Controller</strong>, and introduced a simple MVC blogging
+        application.
+        </p>
+        <p>
+        I'm going to continue using the application in
+        examples today, so I will start with
+        <strong>app06</strong>, continuing
+        with last week's app05. The diretory structure can be
+        found by using the <code>tree</code> command in linux:
+<pre>
+.
+|-- 06_section_overview.php
+`-- app06
+    |-- controller
+    |   `-- controller.php
+    |-- model
+    |   |-- data.xml
+    |   |-- model.php
+    |   `-- rss2sample.xml
+    `-- view
+        |-- content.php
+        |-- header-content.php
+        |-- pagination.php
+        |-- post.php
+        |-- top-bar.php
+        `-- view.php
+</pre>    
+In general, the flow of control follows the normal flow of control for MVC applications, from Controller to Model back to Controller to View: 
+<div class="well">
+<ol>
+<li>06_section_overview.php</li>
+<br/><ol>
+<li>controller/controller.php</li>
+</ol><br/><ol>
+<li>model/model.php</li>
+<li>model/data.xml</li>
+<li>model/model.php</li>
+</ol><br/><ol>
+<li>controller/controller.php</li>
+</ol><br/>
+<ol>
+<li>view/view.php</li>
+<li>view/header-content.php</li>
+<li>view/view.php</li>
+<li>view/top-bar.php</li>
+<li>view/content.php</li>
+<li>view/pagination.php</li>
+<li>view/post.php</li>
+<li>view/content.php</li>
+<li>view/view.php</li>
+</ol><br/>
+<ol>
+<li>controller/controller.php</li>
+</ol><br/>
+<li>06_section_overview.php</li>
+</ol></div><!--well-->
+        </p> 
         ]]></description>
     </item>
     <item>
-        <title>Post Title: Intro to MVC</title>
+        <title>New Features of App06</title>
+        <author>P. Myer Nore</author>
+        <pubDate>Sat, 07 Jul 2012 12:50:21 GMT</pubDate>
+        <description><![CDATA[ 
+<p>In <code>app05</code>, we had what's called a <strong>fat controller</strong>; a lot of data model-specific information was computed in the controller. If you'll go back and look at last section's <code>app05/controller/controller.php</code>, you'll see how bloated the controller is. </p>
+<p>Having a "fat controller" is usually an indication that your controller is doing things that your model should be doing. <strong>In app06, we've moved this computation to the model</strong>, using what may be a new function to you:<code>call_user_func( $function_name, $parameters)</code>.</p>
+<p>As a result, the controller is responsible for variables names that it can request of the model - this is the model's API, or Application Programming Interface. At the top of the controller, we request any variables we need. Then we include the model, and the variables are filled in, ready to pass to the view.</p> 
+
+     ]]></description>
+    </item>
+    <item>
+        <title>Previous Section: Intro to MVC</title>
         <author>P. Myer Nore</author>
         <pubDate>Sat, 30 Jun 2012 12:39:21 GMT</pubDate>
         <description><![CDATA[ 

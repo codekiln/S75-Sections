@@ -8,23 +8,23 @@ $disabled_class = 'class="disabled"';
 
 $disabled_previous =
   // if there is a previous post url
-  $data['url']['previous_post']
+  $data['url_previous_post']
   // then we will not disable the element
   ? ''
   // if not, then we will disable it.
   : $disabled_class;
 
 $disabled_next = 
-  $data['url']['next_post'] 
+  $data['url_next_post'] 
   ? ''
   : $disabled_class;
 
 ?>
 <ul class="pager">
   <li <?php echo $disabled_previous ?> > 
-    <a href='<?php echo $data['url']['previous_post'] ?>'> Previous </a> 
+    <a href='<?php echo $data['url_previous_post'] ?>'> Previous </a> 
   </li> 
   <li <?php echo $disabled_next ?> > 
-    <a href='<?php echo $data['url']['next_post'] ?>'> Next </a>
+    <a href='<?php echo $data['url_next_post'] ?>'> Next </a>
   </li>
 </ul>
