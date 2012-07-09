@@ -1,6 +1,25 @@
 <?php
 $out = '';
 
+echo "<pre>";
+print_r($xml = simplexml_load_file("menu.xml"));
+echo "</pre>";
+echo "<pre>";
+$pizza_name_to_get = 'Broccoli';
+$pizza_size = 'large';
+echo print_r($pizza_we_want = $xml->xpath('//pizzas/item[name="Broccoli"]'));
+echo '</pre>';
+echo '<br/><pre>';
+echo $price = (float) $pizza_we_want[0]->$pizza_size;
+echo "</pre>";
+echo "<br/><pre>";
+echo "$".  number_format(2*$price/100, 2); 
+echo "</pre>";
+
+
+
+echo "</pre>";
+
 $out .= 
 '
 <div class="page-header">

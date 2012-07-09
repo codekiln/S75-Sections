@@ -1,0 +1,18 @@
+<menu>
+<!--
+  <category name="pizzas">
+    <pizza>
+  </category>
+  -->
+  <pizzas>
+    <item>
+      <name>Tomato &amp; Cheese</name>
+      <large>9.75</large>
+    </item>
+    <item>
+      <name>Broccoli</name>
+      <large>1085</large>
+      <small>685</small>
+    </item>
+  </pizzas>
+</menu>
