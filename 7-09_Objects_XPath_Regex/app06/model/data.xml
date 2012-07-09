@@ -19,7 +19,7 @@
         I'm going to continue using the application in
         examples today, so I will start with
         <strong>app06</strong>, continuing
-        with last week's app05. The diretory structure can be
+        with last week's example. The diretory structure can be
         found by using the <code>tree</code> command in linux:
 <pre>
 .
@@ -76,9 +76,14 @@ In general, the flow of control follows the normal flow of control for MVC appli
         <author>P. Myer Nore</author>
         <pubDate>Sat, 07 Jul 2012 12:50:21 GMT</pubDate>
         <description><![CDATA[ 
-<p>In <code>app05</code>, we had what's called a <strong>fat controller</strong>; a lot of data model-specific information was computed in the controller. If you'll go back and look at last section's <code>app05/controller/controller.php</code>, you'll see how bloated the controller is. </p>
+<p>In <code>app04</code>, we had what's called a <strong>fat
+controller</strong>; a lot of data model-specific information was
+computed in the controller. If you'll go back and look at last
+section's <a
+href="../"><code>app04/controller/controller.php</code></a>, you'll see how bloated the controller is. </p>
 <p>Having a "fat controller" is usually an indication that your controller is doing things that your model should be doing. <strong>In app06, we've moved this computation to the model</strong>, using what may be a new function to you:<code>call_user_func( $function_name, $parameters)</code>.</p>
-<p>As a result, the controller is responsible for variables names that it can request of the model - this is the model's API, or Application Programming Interface. At the top of the controller, we request any variables we need. Then we include the model, and the variables are filled in, ready to pass to the view.</p> 
+<p>As a result, the controller is responsible for requesting
+certain special variables names of the model - this is the model's API, or Application Programming Interface. At the top of the controller, we request any variables we need. Then we include the model, and the variables are filled in, ready to pass to the view.</p> 
 
      ]]></description>
     </item>
