@@ -102,9 +102,9 @@ PS1".
 Regular Expressions
 ===================
 
-[This][http://gskinner.com/RegExr/] ajaxy regex selector
+[This](http://gskinner.com/RegExr/) ajaxy regex selector
 is one of many useful tools I use to for quick screen scraping. 
-[Here][http://chris.photobooks.com/regex/default.htm] is
+[Here](http://chris.photobooks.com/regex/default.htm) is
 another one by Chris Neilson.
 
 XPath
@@ -113,28 +113,28 @@ XPath
 Google Chrome
 -------------
 If you use Google's Chrome browser, the
-[Scraper][https://chrome.google.com/webstore/detail/mbigbapnjcgaffohmbkdlecaccepngjd]
+[Scraper](https://chrome.google.com/webstore/detail/mbigbapnjcgaffohmbkdlecaccepngjd)
 tool is really great at helping extract an XPath used to
 find a particular element.
 
 Also, Google Chrome's DOM displayer has XPath support
-baked into its search field - just press Ctrl+Shift+C to
+baked into its search field - just press `Ctrl+Shift+C` to
 bring up the developer console, then start typing an xpath
 expression to bring up a match.
 
-[This][http://www.bit-101.com/xpath/] is currently my
+[This](http://www.bit-101.com/xpath/) is currently my
 favorite online XPath tool.
 
 [Chris Neilson's XPath and XML
-Tools][http://chris.photobooks.com/xml/default.htm] works
+Tools](http://chris.photobooks.com/xml/default.htm) works
 really well for conducting xPath queries online. He also
 has a tool for [visualizing xpath
-queries][http://chris.photobooks.com/regex/default.htm]
+queries](http://chris.photobooks.com/regex/default.htm)
 and [visualizing
-json][http://chris.photobooks.com/json/default.htm]. 
+json](http://chris.photobooks.com/json/default.htm).
 
 I find [Stylus Studio's XPath
-reference][http://www.stylusstudio.com/docs/v62/d_xpath15.html]
+reference](http://www.stylusstudio.com/docs/v62/d_xpath15.html)
 pretty helpful when I'm searching for an XPath function.
 
 
