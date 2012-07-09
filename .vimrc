@@ -1,5 +1,8 @@
+
+set textwidth=65
 set foldmethod=marker
-set textwidth=58
-set tabstop=3
-set expandtab
+set formatoptions+=t
 set wrap
+set expandtab
+set shiftwidth=2
+set softtabstop=2
