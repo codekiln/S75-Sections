@@ -59,8 +59,9 @@ If you have never used a source code manager before, Git will
 change your life as a programmer. Take an hour and watch this
 video from YUI theater to get a better sense of how life is different for "software engineers" than it is for "hackers." 
 
-http://www.yuiblog.com/blog/2011/06/09/video-f2esummit2011-donnelly/
-http://www.youtube.com/watch?v=QB6r9Y7mqyU
+[current link](http://www.youtube.com/watch?v=QB6r9Y7mqyU)
+[original
+link](http://www.yuiblog.com/blog/2011/06/09/video-f2esummit2011-donnelly/)
 
 My favorite git workflow: 
 
