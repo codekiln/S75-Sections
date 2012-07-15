@@ -60,6 +60,7 @@ change your life as a programmer. Take an hour and watch this
 video from YUI theater to get a better sense of how life is different for "software engineers" than it is for "hackers." 
 
 http://www.yuiblog.com/blog/2011/06/09/video-f2esummit2011-donnelly/
+http://www.youtube.com/watch?v=QB6r9Y7mqyU
 
 My favorite git workflow: 
 
@@ -87,7 +88,7 @@ Git Branch in Bash Prompt
 
 In the CS50 Appliance, paste the following into bash and hit return.
 
-    export PS1='\[\e[1;33m\] \w\[\e[1;36m\]$(git branch &>/dev/null; if [ $? -eq 0 ]; then echo " ($(git branch | grep '^*' |sed s/\*\ //))"; fi)\[\e[1;37m\]:\[\e[00m\] '
+    export PS1='\[\e[1;33m\] \w\[\e[1;36m\]$(git branch &>/dev/null; if [ $? -eq 0 ]; then echo " ($(git branch | grep '^*' | sed s/\*\ //))"; fi)\[\e[1;37m\]:\[\e[00m\]'
 
 If you don't like the way it looks, just exit the terminal and
 open it up again.  Do you like the way it looks? Then edit
