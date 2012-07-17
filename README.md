@@ -101,6 +101,36 @@ Now you have the name of your git branch in your bash prompt. If
 you are curious about how this display stuff works, google "Bash
 PS1". 
 
+JavaScript
+==========
+
+Douglas Crockford's Videos on JavaScript
+-------------------------------
+1.  [The Early Years](http://www.youtube.com/watch?v=JxAXlJEmNMg&feature=plcp)
+2.  [And Then there was JavaScript](http://www.youtube.com/watch?v=RO1Wnu-xKoY&feature=plcp)
+3.  [Function the Ultimate](http://www.youtube.com/watch?v=ya4UHuXNygM&feature=plcp)
+4.  [The Metamorphosis of Ajax](http://www.youtube.com/watch?v=Fv9qT9joc0M&feature=plcp)
+5.  [The End of All Things](http://www.youtube.com/watch?v=47Ceot8yqeI&feature=plcp)
+6.  [Loopage](http://www.youtube.com/watch?v=QgwSUtYSUqA&feature=plcp)
+7.  [EMCAScript 5: The New Parts](http://www.youtube.com/watch?v=UTEqr0IlFKY&feature=plcp) 
+8.  [Programming Style & Your Brain](http://www.youtube.com/watch?v=taaEzHI9xyY&feature=plcp)
+
+JSLint
+------
+JSLint is a program you run that examines your JavaScript code
+and offers stylistic improvements according to Douglas
+Crockford's idea of best practice. One thing's for sure - if
+you're a junior JavaScript developer, JSLint can help you improve
+your style. 
+
+While the tool is most often used online, it really is most
+valuable on the command line, to decrease the iterative improvement 
+round trip time. To install it in the CS50 appliance, you should
+probably install node.js, a server-side javascript language that
+comes with its own package manager. 
+
+
+
 Regular Expressions
 ===================
 
