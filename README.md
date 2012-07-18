@@ -108,7 +108,8 @@ Douglas Crockford's Videos on JavaScript
 -------------------------------
 1.  [The Early Years](http://www.youtube.com/watch?v=JxAXlJEmNMg&feature=plcp)
 2.  [And Then there was JavaScript](http://www.youtube.com/watch?v=RO1Wnu-xKoY&feature=plcp)
-3.  [Function the Ultimate](http://www.youtube.com/watch?v=ya4UHuXNygM&feature=plcp)
+3.  [Function the
+Ultimate](http://www.youtube.com/watch?v=ya4UHuXNygM&feature=plcp) - also see the [slides](http://www.slideshare.net/douglascrockford/3-7687071/74)
 4.  [The Metamorphosis of Ajax](http://www.youtube.com/watch?v=Fv9qT9joc0M&feature=plcp)
 5.  [The End of All Things](http://www.youtube.com/watch?v=47Ceot8yqeI&feature=plcp)
 6.  [Loopage](http://www.youtube.com/watch?v=QgwSUtYSUqA&feature=plcp)
@@ -123,13 +124,37 @@ Crockford's idea of best practice. One thing's for sure - if
 you're a junior JavaScript developer, JSLint can help you improve
 your style. 
 
-While the tool is most often used online, it really is most
-valuable on the command line, to decrease the iterative improvement 
-round trip time. To install it in the CS50 appliance, you should
-probably install node.js, a server-side javascript language that
-comes with its own package manager. 
+The tool is most often used [online](http://www.jslint.com/), it
+really is most valuable on the command line to decrease the
+iterative improvement round trip time. To get it working you should probably install node.js, a server-side javascript language that comes with its own package manager. For the time being (last updated 2012-07-17), these instructions will install jslint on the
+command line in the CS50 appliance:
 
+    sudo su
+    yum localinstall --nogpgcheck http://nodejs.tchol.org/repocfg/fedora/nodejs-stable-release.noarch.rpm
+    yum install nodejs-compat-symlinks npm
+    npm install -g jslint
 
+Once you get it working, if you're a vim chick like me, you'll
+want to integrate jslint into vim to get great feedback. To do
+that you'll need to set errorformat like in the .vimrc document
+in this folder. Then you'll be able to enter F4 and start to get
+some great output. You can use :cn and :cN to move
+forward/backward through the quickfix list, respectively. 
+
+JavaScript Documentation Generation 
+------
+So you want to write documentation for your JavaScript just like for PHP or Java? Enter [yuidoc](http://yui.github.com/yuidoc/).
+
+JavaScript Semicolon Insertion
+------------------------------
+See
+[this](http://inimino.org/~inimino/blog/javascript_semicolons)
+PHP 
+===
+
+PHP Documentaiton Generation
+------------------------
+So you want to have class documentation generated like with JavaDoc? Check out [phpDocumentor](http://www.phpdoc.org/).
 
 Regular Expressions
 ===================
