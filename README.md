@@ -104,7 +104,7 @@ PS1".
 JavaScript
 ==========
 
-Douglas Crockford's Videos on JavaScript
+JavaScript videos by Douglas Crockford
 -------------------------------
 1.  [The Early Years](http://www.youtube.com/watch?v=JxAXlJEmNMg&feature=plcp)
 2.  [And Then there was JavaScript](http://www.youtube.com/watch?v=RO1Wnu-xKoY&feature=plcp)
@@ -116,8 +116,8 @@ Ultimate](http://www.youtube.com/watch?v=ya4UHuXNygM&feature=plcp) - also see th
 7.  [EMCAScript 5: The New Parts](http://www.youtube.com/watch?v=UTEqr0IlFKY&feature=plcp) 
 8.  [Programming Style & Your Brain](http://www.youtube.com/watch?v=taaEzHI9xyY&feature=plcp)
 
-JSLint
-------
+JavaScript Style Enforcer - JSLint
+----------------------------------
 JSLint is a program you run that examines your JavaScript code
 and offers stylistic improvements according to Douglas
 Crockford's ideas of best practice. One thing's for sure - if
@@ -134,18 +134,30 @@ While the tool is most often used [online](http://www.jslint.com/), it really is
 Once you get it working, if you're a vim chick like me, you'll
 want to integrate jslint into vim to get great feedback. To do
 that you'll need to set errorformat like in the .vimrc document
-in this folder. Then you'll be able to enter F4 and start to get
-some great output. You can use :cn and :cN to move
-forward/backward through the quickfix list, respectively. 
+in this folder. If you want, you can copy the .vimrc in the same
+folder as this readme into your home directory: cp .vimrc
+~/.vimrc. Then in vim you should be able to enter F4 and start to get
+some great output from jslint. You can use :cn and :cN to move
+forward/backward through the quickfix list, respectively. You may
+find [the list of JSLint error messages](http://goo.gl/APTVi) valuable.
 
 JavaScript Documentation Generation 
-------
+-----------------------------------
 So you want to write documentation for your JavaScript just like for PHP or Java? Enter [yuidoc](http://yui.github.com/yuidoc/).
 
 JavaScript Semicolon Insertion
 ------------------------------
-See
-[this](http://inimino.org/~inimino/blog/javascript_semicolons)
+See [this](http://inimino.org/~inimino/blog/javascript_semicolons).
+
+JavaScript Online Testing Ground: JSFiddle
+------------------------------------------
+Sometimes you need to demonstrate something as an isolated proof
+of concept. JSFiddle lets you use standard libraries such as
+MooTools and JQuery, and even store your JavaScript examples
+online. See [this example](http://jsfiddle.net/MpBE3/) of how to
+avoid the JSLint error "[Don't make functions within a
+loop](http://goo.gl/RDslK)."
+
 PHP 
 ===
 
