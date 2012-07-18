@@ -120,14 +120,11 @@ JSLint
 ------
 JSLint is a program you run that examines your JavaScript code
 and offers stylistic improvements according to Douglas
-Crockford's idea of best practice. One thing's for sure - if
-you're a junior JavaScript developer, JSLint can help you improve
+Crockford's ideas of best practice. One thing's for sure - if
+you're a junior JavaScript developer, JSLint can inform your
 your style. 
 
-The tool is most often used [online](http://www.jslint.com/), it
-really is most valuable on the command line to decrease the
-iterative improvement round trip time. To get it working you should probably install node.js, a server-side javascript language that comes with its own package manager. For the time being (last updated 2012-07-17), these instructions will install jslint on the
-command line in the CS50 appliance:
+While the tool is most often used [online](http://www.jslint.com/), it really is most valuable on the command line to decrease the iterative improvement round trip time. To get it working you should probably install node.js, a server-side javascript language that comes with its own package manager. For the time being (last updated 2012-07-17), these instructions will install jslint on the command line in the CS50 appliance:
 
     sudo su
     yum localinstall --nogpgcheck http://nodejs.tchol.org/repocfg/fedora/nodejs-stable-release.noarch.rpm
