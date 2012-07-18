@@ -1,4 +1,4 @@
-// main.js  - cleanup with jslint
+// main.js  - after cleanup with jslint
 
 "use strict";
 
@@ -19,51 +19,68 @@ dynamic.
 @author http://goo.gl/Ft7m5 
 **/
 function init_php_file_tree() {
-    var aMenus, i, j, mclass, submenu;
+    var aMenus, i, j, mclass, submenu, submenuOnclickFunc;
 
     // http://stackoverflow.com/questions/9621162/jslint-was-used-before-it-was-defined
     /*global document: true */
     if (!document.getElementsByTagName) { return; }
 
     aMenus = document.getElementsByTagName("li");
+
+    submenuOnclickFunc = function () {
+
+        var node, d;
+
+        node = this.nextSibling;
+        // about THIS keyword in javascript
+        // see http://goo.gl/UzVVb
+        // also see video http://goo.gl/UzVVb
+        // also see later in video at http://goo.gl/9DS3b
+        // also see slide at http://goo.gl/6rV6P afer looking at 
+        // slide at http://goo.gl/VlAe0
+        // also see 'difference between method and function' 
+        // at SO at http://stackoverflow.com/a/155655/78202
+        // here, we're using the method form of invocation,
+        // because we're assigning the function to an object - 
+        // in our case the Document Object that we'll be invoking
+        // on. Beccausing we're using the method form of
+        // invocation, 'this' contains a reference to the
+        // Document Object that it is stored inside. 
+
+        while (true) {
+            if (node !== null) {
+                if (node.tagName === "UL") {
+                    d = (node.style.display === "none");
+                    node.style.display = (d) ? "block" : "none";
+                    this.className = (d) ? "open" : "closed";
+                    return false;
+                }
+                node = node.nextSibling;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }; // end of submenuOnclickFunc
+
     for (i = 0; i < aMenus.length; i = i + 1) {
         mclass = aMenus[i].className;
         if (mclass.indexOf("pft-directory") > -1) {
             submenu = aMenus[i].childNodes;
             for (j = 0; j < submenu.length; j = j + 1) {
-                if (submenu[j].tagName === "A") {
-
-                    submenu[j].onclick = function () {
-                        var node, d;
-                        node = this.nextSibling;
-
-                        while (true) {
-                            if (node !== null) {
-                                if (node.tagName === "UL") {
-                                    d = (node.style.display ===
-                                    "none");
-                                    node.style.display = (d) ? "block" : "none";
-                                    this.className = (d) ? "open" : "closed";
-                                    return false;
-                                }
-                                node = node.nextSibling;
-                            } else {
-                                return false;
-                            }
-                        }
-                        return false;
-                    }
-
+                if (submenu[j].tagName === "a") {
+                    submenu[j].onclick = submenuOnclickFunc;
                     submenu[j].className = (mclass.indexOf("open") > -1) ? "open" : "closed";
+                }
+                if (submenu[j].tagName === "ul") {
+                    submenu[j].style.display = (mclass.indexOf("open") > -1) ? "block" : "none";
+                }
+            }
         }
-
-        if (submenu[j].tagName == "UL")
-          submenu[j].style.display = (mclass.indexOf("open") > -1) ? "block" : "none";
-      }
     }
-  }
-  return false;
+    return false;
 }
 
+/*global window: true */
 window.onload = init_php_file_tree;
 
