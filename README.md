@@ -173,6 +173,11 @@ is one of many useful tools I use to for quick screen scraping.
 [Here](http://chris.photobooks.com/regex/default.htm) is
 another one by Chris Neilson.
 
+VIM
+===
+
+If you're like me, you want to be able to copy to your system clipboard from vim in the command line. The default vim in fedora doesn't have clipboard support compiled in to reduce the number of dependencies. In the .bashrc in this folder is the command `alias vim="gvim -v "`, which should work in the appliance since gvim is apparently installed by default as well. If you put that command in your .bashrc and source it or restart terminal, then you should be able to do a visual highlight and do `"+y` to yank to the clipboard register, or `"+p` to paste from the clipboard register. If you have the vmware guest additions installed, this will even sync up with your host clipboard.
+
 XPath
 =====
 
