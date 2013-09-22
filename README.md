@@ -122,6 +122,8 @@ baked into its search field - just press `Ctrl+Shift+C` to
 bring up the developer console, then start typing an xpath
 expression to bring up a match.
 
+Other Online Tools
+------------------
 [This](http://www.bit-101.com/xpath/) is currently my
 favorite online XPath tool.
 
