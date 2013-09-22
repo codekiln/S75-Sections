@@ -1,3 +1,9 @@
+UPDATE 2013-09-22
+=================
+You can now download a zip file containing slides and source code
+for each section at
+[pnore-s75-sections.zip](https://github.com/codekiln/S75-Sections/raw/master/pnore-s75-sections.zip).
+
 Sections for S-75, Building Dynamic Websites
 ============================================
 
